@@ -1,7 +1,8 @@
 @extends('layouts.app', ['title' => __('User Management')])
-@section('title','Categories')
+@section('title','Category '.$categories->name)
 @section('content')
     @include('layouts.headers.cards')
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
@@ -9,10 +10,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Categories') }}</h3>
+                                <h3 class="mb-0">{{ __('Category : '.$categories->name) }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                            <a href="{{route('categories.create')}}" class="btn btn-sm btn-primary">{{ __('Add Categories') }}</a>
+                                <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
@@ -33,25 +34,20 @@
                                     <th scope="col">{{ __('No')}}</th>
                                     <th scope="col">{{ __('Code') }}</th>
                                     <th scope="col">{{ __('Name') }}</th>
-                                    <th scope="col">{{ __('Many items') }}</th>
-                                    <th scope="col">{{__('Detail')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $number = 1;
                                 @endphp
-                                @foreach ($categories as $item)
+                                @foreach ($categories->items as $item)
                                     <tr>
                                         <td>{{__($number++)}}</td>
                                         <td>{{__($item->code)}}</td>
                                         <td>{{__($item->name)}}</td>
-                                        <td>
-                                            {{count($item->items)}} Items
-                                        </td>
-                                        <td><a href="{{route('categories.show',$item->id)}}" class="btn btn-info btn-sm"><i class="fa fa-search"></i>{{__(' Detail')}}</a></td>
                                     </tr>
                                 @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

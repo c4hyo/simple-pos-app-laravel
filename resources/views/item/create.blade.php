@@ -1,5 +1,5 @@
 @extends('layouts.app', ['title' => __('User Management')])
-
+@section('title','Add Item')
 @section('content')
     @include('users.partials.header', ['title' => __('Add Item')])   
 

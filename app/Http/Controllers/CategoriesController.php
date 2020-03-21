@@ -51,9 +51,12 @@ class CategoriesController extends Controller
      * @param  \App\Http\Model\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
-        //
+        $data =[
+            'categories'=>$category
+        ];
+        return view('categories.show',$data);
     }
 
     /**
@@ -62,7 +65,7 @@ class CategoriesController extends Controller
      * @param  \App\Http\Model\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
         //
     }
@@ -74,7 +77,7 @@ class CategoriesController extends Controller
      * @param  \App\Http\Model\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, Categories $category)
     {
         //
     }
@@ -85,7 +88,7 @@ class CategoriesController extends Controller
      * @param  \App\Http\Model\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
         //
     }

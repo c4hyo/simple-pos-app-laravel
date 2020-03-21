@@ -12,15 +12,8 @@
                                 <h3 class="mb-0">{{ __('Item Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                
-                                <form action="{{route('item.destroy',$item->id)}}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <div class="text-right">
-                                        <a href="{{ route('item.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
-                                        <button type="submit" class="btn btn-danger btn-sm">{{ __('Delete Item') }}</button>
-                                    </div>
-                                </form>
+                                <a href="{{ route('item.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="#modal-delete-item" class="btn btn-sm btn-danger" data-toggle="modal">{{__('Delete Item')}}</a>
                             </div>
                         </div>
                     </div>
@@ -101,5 +94,40 @@
         </div>
         
         @include('layouts.footers.auth')
+    </div>
+
+    {{-- modal --}}
+
+    <div class="modal fade" id="modal-delete-item" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+        <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">
+                
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    
+                    <div class="py-3 text-center">
+                        <i class="ni ni-fat-remove ni-3x"></i>
+                        <h4 class="heading mt-4">Are you sure want to Delete this item ??</h4>
+                    </div>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <form action="{{route('item.destroy',$item->id)}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-white">Yes</button>
+                    </form>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">No</button> 
+                </div>
+                
+            </div>
+        </div>
     </div>
 @endsection

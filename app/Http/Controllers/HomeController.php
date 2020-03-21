@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Model\Item;
+use App\Http\Model\Categories;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,8 +22,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Item $item,Categories $category)
     {
-        return view('dashboard');
+        $data = [
+            'item' => $item->where('stocks','>',0)->get(),
+            'category' => $category->all()
+        ];
+        return view('home',$data);
+    }
+    public function testing(Request $request)
+    {
+        dd($request->all());
     }
 }

@@ -35,7 +35,7 @@
                                     <th scope="col">{{ __('Name Item') }}</th>
                                     <th scope="col">{{ __('Stocks') }}</th>
                                     <th scope="col">{{ __('Prices') }}</th>
-                                    <th scope="col">{{ __('Categories')}}</th>
+                                    <th scope="col">{{ __('Category')}}</th>
                                     <th scope="col">{{__('Edit')}}</th>
                                 </tr>
                             </thead>
