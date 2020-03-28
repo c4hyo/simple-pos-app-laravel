@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::resource('item', 'ItemController');
+	Route::get('/transaction','HomeController@transaction')->name('index.transaction');
+	route::resource('transaction','TransactionController',['only' => ['edit']]);
 	Route::resource('categories', 'CategoriesController');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

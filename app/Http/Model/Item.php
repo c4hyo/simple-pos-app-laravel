@@ -10,4 +10,8 @@ class Item extends Model
     public function categories(){
         return $this->belongsTo('App\Http\Model\Categories');
     }
+    public function transaction()
+    {
+        return $this->belongsToMany('App\Http\Model\Transaction')->withPivot('quantity','subtotal');
+    }
 }
